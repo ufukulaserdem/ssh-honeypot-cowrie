@@ -51,3 +51,7 @@ tail -f ../cowrie/var/log/cowrie/cowrie.json
 cd infra
 sudo docker-compose down
 ```
+## Acknowledgments
+
+This project uses [Cowrie](https://github.com/cowrie/cowrie), an SSH/Telnet honeypot written in Python.  
+All credit for the honeypot engine goes to the Cowrie maintainers — this repo only provides a Docker-based setup and educational wrapper.
