@@ -73,6 +73,34 @@ tail -f ../cowrie/var/log/cowrie/cowrie.json
 cd infra
 sudo docker-compose down
 ```
+## Future Plans
+
+This repository is only the first step. Planned improvements and extensions include:
+
+- **Log Parsing & Visualization**  
+  - Python script to parse `cowrie.json` into CSV/SQLite  
+  - Summaries of top usernames, passwords, and source IPs  
+  - Basic dashboards (e.g., Grafana or Chart.js)
+
+- **Threat Intelligence Integration**  
+  - Cross-check IPs from logs against public feeds (AbuseIPDB, AlienVault OTX)  
+  - Auto-block repeat offenders with `iptables` or `ufw`
+
+- **SIEM / IDS Integration**  
+  - Forward Cowrie logs into Suricata, Wazuh, or Elastic stack  
+  - Create custom detection rules for brute force and unusual patterns
+
+- **Web Dashboard**  
+  - Simple Flask/FastAPI app to display honeypot activity in real time  
+  - Charts for login attempts, credentials, and geolocation of attackers
+
+- **Additional Honeypots**  
+  - Extend setup to cover HTTP/FTP/SMB services for broader attack visibility  
+  - Document comparisons between SSH and other protocol honeypots
+
+- **Cloud Deployment**  
+  - Deploy the honeypot on Azure or AWS  
+  - Integrate logs into **Azure Sentinel** for security hunting with KQL
 
 ---
 
