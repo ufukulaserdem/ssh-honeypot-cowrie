@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 ufukulaserdem
+Copyright (c) 2025 Ufuk Ulas Erdem
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+### Third-Party Software Notice
+
+This repository provides configuration and setup scripts for running
+[Cowrie](https://github.com/cowrie/cowrie), an SSH/Telnet honeypot written in Python.
+
+Cowrie itself is © its respective authors and contributors, and distributed under the
+BSD 2-Clause License. See the Cowrie repository for full license details.
+
+This project does not modify Cowrie's license. All rights in Cowrie remain with its authors.
+Only the additional configuration files and documentation in this repository are licensed under MIT.
