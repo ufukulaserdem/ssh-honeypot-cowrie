@@ -1,7 +1,7 @@
 # SSH Honeypot with Cowrie (Docker)
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://ufukulaserdem.github.io/ssh-honeypot-cowrie)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://github.com/ufukulaserdem/ssh-honeypot-cowrie)
 [![Docker](https://img.shields.io/badge/docker-cowrie-blue?logo=docker)](https://hub.docker.com/r/cowrie/cowrie)
 [![Made with Python](https://img.shields.io/badge/made%20with-Python%203.11-yellow.svg?logo=python)](https://www.python.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](./CONTRIBUTING.md)
