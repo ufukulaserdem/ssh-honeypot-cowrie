@@ -6,12 +6,16 @@
 [![Made with Python](https://img.shields.io/badge/made%20with-Python%203.11-yellow.svg?logo=python)](https://www.python.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](./CONTRIBUTING.md)
 
-# SSH Honeypot with Cowrie (Docker)
+## Overview
+This project runs an **SSH honeypot** using [Cowrie](https://github.com/cowrie/cowrie) inside Docker.  
+It listens on host port **22**, logs brute-force attempts and attacker activity, and stores data in JSON for later analysis.
 
-Dockerized SSH honeypot using [Cowrie](https://github.com/cowrie/cowrie).
-Host port **22** serves the honeypot; your real SSH should live on a different port (e.g., **22222**).
+> ⚠ This project is **for educational and research purposes only**.  
+> Do not run honeypots in production networks. See [SECURITY.md](./SECURITY.md) for details.
 
-## Structure
+---
+
+## Project Structure
 ```
 .
 ├─ infra/
@@ -24,42 +28,62 @@ Host port **22** serves the honeypot; your real SSH should live on a different p
       └─ log/cowrie/cowrie.json
 ```
 
-## Run
+---
+
+## Quick Start
+From the repo root:
 ```bash
-# from repo root:
 mkdir -p cowrie/{etc,var}
-# ensure etc files exist (see above), then:
+# ensure etc files exist (see this repo for examples)
 cd infra
 sudo docker-compose up -d
 sudo docker ps
 ```
 
-Test it from another machine (or host):
+### Test the honeypot
+From another machine (or your host):
 ```bash
 ssh -p 22 <VM_OR_HOST_IP>
 ```
 
-View logs:
+### View logs
 ```bash
 tail -f ../cowrie/var/log/cowrie/cowrie.json
 ```
 
-## Operational Notes
-- Real SSH for admin should listen on **22222**.
-- Honeypot keys change on container rebuild unless you persist them; with the `etc/` bind mount in this repo, keys persist after the first run.
-- Logs can grow; `docker` log rotation is enabled. Rotate/trim `cowrie.json` as needed.
+---
 
-## Risks & Limits
-- Honeypot does **not** harden your system; it only records activity.
-- Mostly captures bot traffic; advanced actors may detect the emulation.
-- If publishing data, remove/obfuscate PII (IPs, usernames).
+## Operational Notes
+- Real SSH for admin should listen on **22222** to avoid conflict.
+- Cowrie generates host keys on first run; because of the `etc/` bind mount, they persist across container rebuilds.
+- Logs can grow large. Docker log rotation is enabled (`max-size=50m`, `max-file=5`), but you should also monitor `cowrie.json` size.
+
+---
+
+## Risks & Limitations
+- Honeypot does **not** harden your system — it only records attacker activity.
+- You will mostly capture bot traffic and dictionary brute force attempts.
+- Skilled attackers may detect Cowrie’s emulation quickly.
+- Logs may contain IPs, usernames, or other identifiers. **Sanitize data** before publishing.
+
+---
 
 ## Tear Down
 ```bash
 cd infra
 sudo docker-compose down
 ```
-## Acknowledgments
 
-This project uses [Cowrie](https://github.com/cowrie/cowrie), an SSH/Telnet honeypot written in Python.  
-All credit for the honeypot engine goes to the Cowrie maintainers — this repo only provides a Docker-based setup and educational wrapper.
+---
+
+## Licensing
+- This repository’s configuration and documentation: **MIT License** ([LICENSE](./LICENSE))  
+- [Cowrie](https://github.com/cowrie/cowrie) honeypot: **BSD-2-Clause License** (see Cowrie repo)  
+- This project does not modify Cowrie’s license; it only provides Docker setup and configs.
+
+---
+
+## Acknowledgments
+- [Cowrie](https://github.com/cowrie/cowrie) — SSH/Telnet honeypot engine  
+- [Docker](https://www.docker.com/) — container runtime  
+- [Shields.io](https://shields.io) — for badges  up and educational wrapper.
